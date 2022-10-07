@@ -1,0 +1,62 @@
+2013 Descentralizado cienciano-comercio.txt
+2013 Descentralizado en-vivo-melgar-0-0-cienciano.txt
+2013 Descentralizado real-garcilaso-cristal.txt
+2013 Descentralizado utc-melgar.txt
+2013 Descentralizado Series aurich-universitario.txt
+2013 Descentralizado Series cienciano-aurich.txt
+2013 Descentralizado Series san-martin-inti-gas.txt
+2015 Apertura alianza-leon.txt
+2015 Apertura aurich-municipal.txt
+2015 Apertura comercio-melgar.txt
+2015 Apertura loreto-alianza.txt
+2015 Apertura municipal-san-martin.txt
+2015 Apertura vallejo-aurich.txt
+2015 Clausura en-vivo-comercio-0-vallejo-0.txt
+2017 Apertura real-garcilaso-comerciantes.txt
+2017 Clausura en-vivo-comerciantes-0-real-garcilaso-0.txt
+2018 Apertura comercio-comerciantes.txt
+2018 Apertura en-vivo-municipal-4-rosario.txt
+2018 Apertura municipal-melgar.txt
+2018 Apertura real-garcilaso-comerciantes.txt
+2018 Apertura san-martin-municipal.txt
+2018 Clausura ayacucho-em-binacional.txt
+2018 Clausura comerciantes-em-binacional.txt
+2018 Clausura comerciantes-real-garcilaso.txt
+2018 Clausura em-binacional-cristal.txt
+2018 Clausura em-binacional-universitario.txt
+2018 Clausura en-vivo-cristal-0-municipal-0.txt
+2018 Clausura en-vivo-em-binacional-0-real-garcilaso-3.txt
+2018 Clausura en-vivo-universitario-1-utc-1.txt
+2018 Clausura final-real-garcilaso-2-cristal-2.txt
+2018 Clausura municipal-comerciantes.txt
+2018 Clausura real-garcilaso-universitario.txt
+2018 Clausura rosario-cristal.txt
+2018 Clausura utc-comercio.txt
+2018 Descentralizado Definiciones en-vivo-melgar-2-alianza-lima-1.txt
+2019 Apertura ayacucho-binacional.txt
+2019 Apertura municipal-huancayo.txt
+2019 Apertura pirata-san-martin.txt
+2019 Apertura universitario-mannucci.txt
+2019 Clausura ayacucho-pirata.txt
+2020 Liga 1 Apertura alianza-universidad-vallejo.txt
+2020 Liga 1 Apertura cantolao-stein.txt
+2020 Liga 1 Apertura cienciano-cristal.txt
+2020 Liga 1 Apertura utc-boys.txt
+2020 Liga 1 Fase 2 cristal-ayacucho-fc.txt
+2021 Liga1 Fase 1 cristal-boys.txt
+2021 Liga1 Fase 1 en-vivo-universitario-1-melgar-1.txt
+2021 Liga1 Fase 1 mannucci-alianza-atletico.txt
+2021 Liga1 Fase 2 san-martin-alianza-atletico.txt
+2022 Liga 1 Apertura alianza-atletico-mannucci.txt
+2022 Liga 1 Apertura alianza-lima-vallejo.txt
+2022 Liga 1 Apertura cristal-binacional.txt
+2022 Liga 1 Apertura grau-cienciano.txt
+2022 Liga 1 Apertura san-martin-huancayo.txt
+2022 Liga 1 Apertura utc-municipal.txt
+2022 Liga 1 Apertura vallejo-binacional.txt
+2022 Liga 1 Clausura binacional-boys.txt
+2022 Liga 1 Clausura boys-cantolao.txt
+2022 Liga 1 Clausura cantolao-utc.txt
+2022 Liga 1 Clausura mannucci-san-martin.txt
+2022 Liga 1 Clausura municipal-adt.txt
+2022 Liga 1 Clausura universitario-municipal.txt

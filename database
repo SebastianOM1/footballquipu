@@ -1,0 +1,46 @@
+Table players {
+  id int
+  team int
+  position varchar
+  shirt_number int
+  games_started int
+  games_sub int
+  minutes_played int
+  yellow_cards int
+  red_cards int
+  goals_scored int
+}
+
+Table teams {
+  id int
+  name varchar
+  competition int
+}
+
+Table matches {
+  id int
+  competition int
+  team1 int
+  team2 int
+  arena int
+  played_on date
+}
+
+Table arenas {
+  id int
+  name varchar
+  city varchar
+}
+
+Table competitions {
+  id int
+  year int
+  name varchar
+}
+
+Ref: players.team > teams.id
+Ref: matches.competition > competitions.id
+Ref: matches.team1 > teams.id
+Ref: matches.team2 > teams.id
+Ref: matches.arena > arenas.id
+Ref: teams.competition > competitions.id
