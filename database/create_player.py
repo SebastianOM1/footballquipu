@@ -64,28 +64,33 @@ for year in os.listdir(DATAFOLDER):
             try:
                 results = parse(clean_table(html))
                 team_1, team_2 = results['Team 1'], results['Team 2']
-                competition_id = cur.execute("SELECT id FROM competition WHERE name ='" + str(competition) + "'").fetchone()[0]
-                team_1_id = cur.execute("SELECT id FROM team WHERE name ='" + team_1 + "' and competition = " + str(competition_id)).fetchone()[0]
-                team_2_id = cur.execute("SELECT id FROM team WHERE name ='" + team_2 + "' and competition = " + str(competition_id)).fetchone()[0]
+                team_1_query = "SELECT team.id FROM team JOIN competition WHERE team.name ='" + team_1 + "'"
+                team_1_query += " and competition.name = '" + competition + "'"
+                team_1_query += " and team.competition = competition.id and competition.year = '" + year + "'"
+                team_1_id = cur.execute(team_1_query).fetchone()[0]
+                team_2_query = "SELECT team.id FROM team JOIN competition WHERE team.name ='" + team_2 + "'"
+                team_2_query += " and competition.name = '" + competition + "'"
+                team_2_query += " and team.competition = competition.id and competition.year = '" + year + "'"
+                team_2_id = cur.execute(team_2_query).fetchone()[0]
                 starters_1, starters_2 = results['Starting eleven 1'], results['Starting eleven 2']
                 subs_1, subs_2 = results['Subs 1'], results['Subs 2']
                 substitutions = results['Substitutions']
                 goals = results['Goals']
 
                 for player in starters_1:
-                    if (player[0], team_1) in player_dict:
-                        player_dict[(player[0], team_1)][0] = player[1]
-                        player_dict[(player[0], team_1)][1][player[-1]] += 1
-                        player_dict[(player[0], team_1)][2] += 1
-                        player_dict[(player[0], team_1)][4] += minutes_played(player, True, substitutions)
-                        player_dict[(player[0], team_1)][5] += yellow_cards(player)
-                        player_dict[(player[0], team_1)][6] += red_cards(player)
-                        player_dict[(player[0], team_1)][7] += goals_scored(player, goals)
-                        player_dict[(player[0], team_1)][8] += player[-2]
+                    if (player[0], team_1_id) in player_dict:
+                        player_dict[(player[0], team_1_id)][0] = player[1]
+                        player_dict[(player[0], team_1_id)][1][player[-1]] += 1
+                        player_dict[(player[0], team_1_id)][2] += 1
+                        player_dict[(player[0], team_1_id)][4] += minutes_played(player, True, substitutions)
+                        player_dict[(player[0], team_1_id)][5] += yellow_cards(player)
+                        player_dict[(player[0], team_1_id)][6] += red_cards(player)
+                        player_dict[(player[0], team_1_id)][7] += goals_scored(player, goals)
+                        player_dict[(player[0], team_1_id)][8] += player[-2]
                     else:
                         position_dict = {'GK': 0, 'CB': 0, 'RB': 0, 'LB': 0, 'CMF': 0, 'RMF': 0, 'LMF': 0, 'AMF': 0, 'ST': 0}
                         position_dict[player[-1]] += 1
-                        player_dict[(player[0], team_1)] = [
+                        player_dict[(player[0], team_1_id)] = [
                             player[1],
                             position_dict,
                             1,
@@ -98,19 +103,19 @@ for year in os.listdir(DATAFOLDER):
                         ]
 
                 for player in starters_2:
-                    if (player[0], team_2) in player_dict:
-                        player_dict[(player[0], team_2)][0] = player[1]
-                        player_dict[(player[0], team_2)][1][player[-1]] += 1
-                        player_dict[(player[0], team_2)][2] += 1
-                        player_dict[(player[0], team_2)][4] += minutes_played(player, True, substitutions)
-                        player_dict[(player[0], team_2)][5] += yellow_cards(player)
-                        player_dict[(player[0], team_2)][6] += red_cards(player)
-                        player_dict[(player[0], team_2)][7] += goals_scored(player, goals)
-                        player_dict[(player[0], team_2)][8] += player[-2]
+                    if (player[0], team_2_id) in player_dict:
+                        player_dict[(player[0], team_2_id)][0] = player[1]
+                        player_dict[(player[0], team_2_id)][1][player[-1]] += 1
+                        player_dict[(player[0], team_2_id)][2] += 1
+                        player_dict[(player[0], team_2_id)][4] += minutes_played(player, True, substitutions)
+                        player_dict[(player[0], team_2_id)][5] += yellow_cards(player)
+                        player_dict[(player[0], team_2_id)][6] += red_cards(player)
+                        player_dict[(player[0], team_2_id)][7] += goals_scored(player, goals)
+                        player_dict[(player[0], team_2_id)][8] += player[-2]
                     else:
                         position_dict = {'GK': 0, 'CB': 0, 'RB': 0, 'LB': 0, 'CMF': 0, 'RMF': 0, 'LMF': 0, 'AMF': 0, 'ST': 0}
                         position_dict[player[-1]] += 1
-                        player_dict[(player[0], team_2)] = [
+                        player_dict[(player[0], team_2_id)] = [
                             player[1],
                             position_dict,
                             1,
@@ -123,16 +128,16 @@ for year in os.listdir(DATAFOLDER):
                         ]
                         
                 for player in subs_1:
-                    if (player[0], team_1) in player_dict:
-                        player_dict[(player[0], team_1)][0] = player[1]
-                        player_dict[(player[0], team_1)][3] += 1
-                        player_dict[(player[0], team_1)][4] += minutes_played(player, False, substitutions)
-                        player_dict[(player[0], team_1)][5] += yellow_cards(player)
-                        player_dict[(player[0], team_1)][6] += red_cards(player)
-                        player_dict[(player[0], team_1)][7] += goals_scored(player, goals)
+                    if (player[0], team_1_id) in player_dict:
+                        player_dict[(player[0], team_1_id)][0] = player[1]
+                        player_dict[(player[0], team_1_id)][3] += 1
+                        player_dict[(player[0], team_1_id)][4] += minutes_played(player, False, substitutions)
+                        player_dict[(player[0], team_1_id)][5] += yellow_cards(player)
+                        player_dict[(player[0], team_1_id)][6] += red_cards(player)
+                        player_dict[(player[0], team_1_id)][7] += goals_scored(player, goals)
                     else:
                         position_dict = {'GK': 0, 'CB': 0, 'RB': 0, 'LB': 0, 'CMF': 0, 'RMF': 0, 'LMF': 0, 'AMF': 0, 'ST': 0}
-                        player_dict[(player[0], team_1)] = [
+                        player_dict[(player[0], team_1_id)] = [
                             player[1],
                             position_dict,
                             0,
@@ -145,16 +150,16 @@ for year in os.listdir(DATAFOLDER):
                         ]
                         
                 for player in subs_2:
-                    if (player[0], team_2) in player_dict:
-                        player_dict[(player[0], team_2)][0] = player[1]
-                        player_dict[(player[0], team_2)][3] += 1
-                        player_dict[(player[0], team_2)][4] += minutes_played(player, False, substitutions)
-                        player_dict[(player[0], team_2)][5] += yellow_cards(player)
-                        player_dict[(player[0], team_2)][6] += red_cards(player)
-                        player_dict[(player[0], team_2)][7] += goals_scored(player, goals)
+                    if (player[0], team_2_id) in player_dict:
+                        player_dict[(player[0], team_2_id)][0] = player[1]
+                        player_dict[(player[0], team_2_id)][3] += 1
+                        player_dict[(player[0], team_2_id)][4] += minutes_played(player, False, substitutions)
+                        player_dict[(player[0], team_2_id)][5] += yellow_cards(player)
+                        player_dict[(player[0], team_2_id)][6] += red_cards(player)
+                        player_dict[(player[0], team_2_id)][7] += goals_scored(player, goals)
                     else:
                         position_dict = {'GK': 0, 'CB': 0, 'RB': 0, 'LB': 0, 'CMF': 0, 'RMF': 0, 'LMF': 0, 'AMF': 0, 'ST': 0}
-                        player_dict[(player[0], team_2)] = [
+                        player_dict[(player[0], team_2_id)] = [
                             player[1],
                             position_dict,
                             0,
